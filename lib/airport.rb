@@ -11,12 +11,13 @@ class Airport
   end
   
   def land(plane)
-    fail 'Airport is full' if @planes.length >= @capacity
+    raise 'can not land as weather is stormy' if stormy?
+    raise 'Airport is full' if @planes.length >= @capacity
     @planes << plane
   end
 
   def take_off(plane)
-    raise 'can not land as weather is stormy' if stormy?
+    raise 'can not take off as weather is stormy' if stormy?
   end
 
   def stormy?
