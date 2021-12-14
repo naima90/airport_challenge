@@ -21,4 +21,9 @@ describe Airport do
     capacity = Airport::DEFAULT_CAPACITY
     expect(new_airport.capacity).to eq 50
   end
+
+  it 'prevents take-off when weather is stormy' do
+    allow(subject).to receive(:stormy?).and_return true
+    expect {subject.take_off(:plane) }.to raise_error 'can not land as weather is stormy'
+  end
 end
